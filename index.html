@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .card-products {
+        display: flex;
+        flex-direction: row;
+      }
+
+      .card {
+        width: 180px;
+        margin-bottom: 30px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+      }
+
+      .card .card-thumb {
+        width: 180px;
+        height: 50px;
+        object-fit: cover;
+      }
+
+      .card.cart {
+        background: coral;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>Hello vue.js</h1>
+    <section id="contact">
+      <div class="card-container card-products" :class="classTesting">
+        <div
+          class="card"
+          v-for="product in productsComputed"
+          :class="{ cart: product.isCart }"
+          @dblclick="onToggleCart($event, product)"
+        >
+          <img class="card-thumb" v-bind:src="product.thumb" />
+          <h3>{{ product.name }}</h3>
+          <p>{{ product.price }}</p>
+        </div>
+      </div>
+    </section>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>
